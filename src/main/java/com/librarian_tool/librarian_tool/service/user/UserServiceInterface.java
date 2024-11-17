@@ -1,9 +1,9 @@
-package com.librarian_tool.librarian_tool.common;
+package com.librarian_tool.librarian_tool.service.user;
 
 import com.librarian_tool.librarian_tool.dto.*;
 
 import java.util.List;
-public interface ServicesInterface {
+public interface UserServiceInterface {
 
 
     UserDto removeUser(UserDto userDto);
@@ -14,5 +14,7 @@ public interface ServicesInterface {
 
     UserDto updateUser(UserDto userDto);
 
+
+    String verify(UserDto userDto);
 
 }

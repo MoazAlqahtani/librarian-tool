@@ -1,4 +1,4 @@
-package com.librarian_tool.librarian_tool.model;
+package com.librarian_tool.librarian_tool.model.user;
 
 import com.librarian_tool.librarian_tool.dto.UserDto;
 import jakarta.persistence.*;
@@ -24,5 +24,6 @@ public class UsersModel {
     private String password;
     @Column(nullable = false)
     private String Role;
+    
 
 }
