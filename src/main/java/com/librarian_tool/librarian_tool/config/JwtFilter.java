@@ -1,7 +1,5 @@
 package com.librarian_tool.librarian_tool.config;
 
-import com.librarian_tool.librarian_tool.service.JWTService;
-import com.librarian_tool.librarian_tool.service.MyUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,15 +14,44 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-
+/**
+ * The {@class JwtFilter} is a custom security filter that processes incoming HTTP requests to authenticate users
+ * based on a JWT (JSON Web Token) provided in the `Authorization` header.
+ *
+ * It extends {@link OncePerRequestFilter} to ensure that the filtering logic is executed once per request.
+ *
+ * The filter extracts the JWT from the `Authorization` header, validates it, and sets the authentication details in the
+ * {@link SecurityContextHolder} if the token is valid.
+ *
+ * Workflow:
+ *   1. Extracts the JWT token from the `Authorization` header.
+ *   2. Parses the username from the token.
+ *   3. Validates the token using {@link JWTService}.
+ *   4. Sets the user authentication in the security context if validation is successful.
+ *
+ * @author Moaz Alqahtani
+ * @version 1.0
+ * @since 2024-Nov
+ *
+ */
 @Component
 public class JwtFilter extends OncePerRequestFilter{
-
     @Autowired
     private JWTService jwtService;
     @Autowired
     ApplicationContext context;
 
+    /**
+     * Processes incoming HTTP requests, extracts the JWT token from the `Authorization` header,
+     * validates the token, and sets the user authentication in the security context.
+     *
+     * @param request     incoming {@link HttpServletRequest}.
+     * @param response    outgoing {@link HttpServletResponse}.
+     * @param filterChain {@link FilterChain} to pass the request to the next filter.
+     * @throws ServletException if an error occurs during filtering.
+     * @throws IOException      if an input or output error occurs.
+     *
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         //Bearer Token

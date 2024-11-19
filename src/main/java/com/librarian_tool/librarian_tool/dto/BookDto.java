@@ -1,23 +1,32 @@
 package com.librarian_tool.librarian_tool.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.librarian_tool.librarian_tool.model.book.BookCategory;
-import com.librarian_tool.librarian_tool.model.book.BookModel;
+import com.librarian_tool.librarian_tool.book.BookCategory;
+import com.librarian_tool.librarian_tool.book.BookModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-
+/**
+ * Data Transfer Object (DTO) for book-related information.
+ *
+ * Represents the data structure for transferring book details between layers.
+ */
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BookDto {
-
+    /**
+     * The unique identifier of the book.
+     */
     private Long id;
+    /**
+     * The International Standard Book Number (ISBN) of the book.
+     */
     private String isbn;
     private String name;
     private Date publishDate;
